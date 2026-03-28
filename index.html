@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Somewhere Else</title>
+<title>Unhurried</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,19 +26,27 @@
 
   /* HEADER */
   header {
-    padding: 3rem 2.5rem 1.5rem;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+    padding: 4rem 2.5rem 3rem;
     border-bottom: 0.5px solid var(--subtle);
   }
 
   .site-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
+    font-size: clamp(3rem, 10vw, 7rem);
     font-weight: 300;
-    letter-spacing: 0.04em;
+    letter-spacing: -0.01em;
     color: var(--ink);
+    line-height: 1;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .header-bottom {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .site-tagline {
@@ -47,6 +55,16 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-weight: 300;
+  }
+
+  .site-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 340px;
+    line-height: 1.5;
   }
 
   /* GRID */
@@ -187,14 +205,15 @@
 
   .ai-narrative {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
     font-weight: 300;
-    line-height: 1.7;
+    line-height: 1.6;
     color: var(--ink);
-    margin-bottom: 1.5rem;
-    max-width: 540px;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    font-style: italic;
+    padding: 1.5rem 0 1.5rem 1.25rem;
     border-left: 2px solid var(--accent);
-    padding-left: 1rem;
   }
 
   .result-grid {
@@ -215,22 +234,22 @@
 
   .result-item img {
     width: 100%;
-    aspect-ratio: 3/4;
+    aspect-ratio: 2/3;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
-    filter: saturate(0.9);
+    transition: transform 0.5s ease;
+    filter: saturate(0.95);
   }
 
   .result-item:hover img { transform: scale(1.04); }
 
   .result-caption {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: var(--muted);
-    margin-top: 6px;
-    letter-spacing: 0.04em;
-    line-height: 1.4;
-    font-family: 'DM Sans', sans-serif;
+    margin-top: 10px;
+    line-height: 1.5;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
   }
 
   /* LOADING */
@@ -324,8 +343,11 @@
 <body>
 
 <header>
-  <span class="site-name">Somewhere Else</span>
-  <span class="site-tagline">Evan Lai</span>
+  <span class="site-name">Unhurried</span>
+  <div class="header-bottom">
+    <span class="site-tagline">Evan Lai &mdash; Photography</span>
+    <span class="site-quote">"I photograph the things people walk past without stopping."</span>
+  </div>
 </header>
 
 <section class="grid-section">
