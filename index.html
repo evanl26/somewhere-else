@@ -466,24 +466,26 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 
 // Scroll reveal
 const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       setTimeout(() => {
         entry.target.classList.add('revealed');
-      }, entry.target.dataset.delay || 0);
+      }, parseInt(entry.target.dataset.delay) || 0);
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.grid-item').forEach((el, i) => {
-  el.dataset.delay = (i % 3) * 80;
-  revealObserver.observe(el);
-});
-
-document.querySelectorAll('.ai-section').forEach(el => {
-  revealObserver.observe(el);
-});
+// Small delay so page is fully laid out before observing
+setTimeout(() => {
+  document.querySelectorAll('.grid-item').forEach((el, i) => {
+    el.dataset.delay = (i % 3) * 100;
+    revealObserver.observe(el);
+  });
+  document.querySelectorAll('.ai-section').forEach(el => {
+    revealObserver.observe(el);
+  });
+}, 100);
 </script>
 
 </body>
