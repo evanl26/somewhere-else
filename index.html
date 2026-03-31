@@ -17,7 +17,7 @@
   .site-quote { font-family: "Cormorant Garamond", serif; font-size: 1rem; font-style: italic; color: var(--muted); font-weight: 300; max-width: 340px; line-height: 1.5; }
 
   .grid-section { padding: 2rem 2.5rem; }
-  .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; grid-auto-flow: dense; }
   @media (max-width: 600px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } .grid-item.wide { grid-column: span 1; aspect-ratio: 1; } .grid-item.tall { grid-row: span 1; aspect-ratio: 1; } }
   .grid-item { overflow: hidden; cursor: pointer; position: relative; aspect-ratio: 1; opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .grid-item.revealed { opacity: 1; transform: translateY(0); }
@@ -179,7 +179,20 @@ const PHOTOS = [
   { src: "./images/L1044398.JPG", desc: "Two windmills at Zaanse Schans, a bird crossing a grey Dutch sky", tags: ['netherlands', 'windmill', 'calm', 'open', 'countryside'] },
 ];
 
-const layouts = ["wide", "", "tall", "", "", "wide", "", "", "tall", "", "", "", "wide", "", "tall", "", "", "wide", "", "", "tall", "", "", "", "wide", "", "tall", "", "", "wide", "", "", "tall", "", "", "", "wide", "", "tall", "", "", "wide", "", "", "tall", "", "", ""];
+const layouts = [
+  "wide","","","","","",
+  "tall","","","","",
+  "wide","","","","","",
+  "","","","","","",
+  "wide","","","","","",
+  "tall","","","","",
+  "wide","","","","","",
+  "","","","","","",
+  "wide","","","","","",
+  "tall","","","","",
+  "wide","","","","","",
+  "","","","","","",
+];
 
 const grid = document.getElementById("mainGrid");
 PHOTOS.forEach((p, i) => {
