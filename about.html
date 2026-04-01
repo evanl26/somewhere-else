@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About &mdash; Unhurried</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=EB+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --ink: #1a1814; --muted: #8a8680; --subtle: #e8e5e0; --bg: #f7f5f2; --white: #ffffff; --accent: #c8a96e; }
+  body { font-family: "DM Sans", sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
+
+  header { padding: 4rem 2.5rem 3rem; border-bottom: 0.5px solid var(--subtle); }
+  .site-name { font-family: "Cormorant Garamond", serif; font-size: clamp(3rem, 10vw, 7rem); font-weight: 300; font-style: italic; letter-spacing: -0.01em; color: var(--ink); line-height: 1.2; display: inline-block; margin-bottom: 1.5rem; transform: skewX(-8deg); text-decoration: none; }
+  .header-bottom { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .site-tagline { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 300; }
+  .site-nav { display: flex; gap: 1.5rem; align-items: baseline; }
+  .nav-link { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+  .nav-link:hover, .nav-link.active { color: var(--ink); }
+
+  .about-section { max-width: 640px; padding: 5rem 2.5rem 6rem; }
+  .about-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 2.5rem; }
+
+  .about-bio { font-family: "Cormorant Garamond", serif; font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 300; line-height: 1.6; color: var(--ink); margin-bottom: 3rem; }
+
+  .about-divider { width: 32px; height: 1px; background: var(--accent); margin-bottom: 3rem; }
+
+  .about-why-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
+  .about-why p { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 300; font-style: italic; line-height: 1.75; color: var(--ink); margin-bottom: 1.25rem; }
+  .about-why p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="site-name">Unhurried</a>
+  <div class="header-bottom">
+    <span class="site-tagline">Evan Lai &mdash; Photography</span>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-link">Work</a>
+      <a href="about.html" class="nav-link active">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="about-section">
+  <p class="about-label">About</p>
+
+  <p class="about-bio">Evan Lai is a photographer based in New York. He shoots on film and digital, usually somewhere he&rsquo;s never been before, usually slower than everyone around him.</p>
+
+  <div class="about-divider"></div>
+
+  <p class="about-why-label">Why</p>
+  <div class="about-why">
+    <p>I started carrying a camera because I kept forgetting things &mdash; not big things, but the small ones. The way light hits a canal at noon. A stranger pausing outside a flower shop. The feeling of a city before it wakes up.</p>
+    <p>Photography, for me, isn&rsquo;t about the shot. It&rsquo;s about having a reason to stop. Most people move through a place and let it wash over them. I&rsquo;d rather stay a little longer, look a little closer, and bring something back.</p>
+    <p><em>Unhurried</em> is that something.</p>
+  </div>
+</section>
+
+</body>
+</html>

@@ -16,6 +16,15 @@
   .site-tagline { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 300; }
   .site-quote { font-family: "Cormorant Garamond", serif; font-size: 1rem; font-style: italic; color: var(--muted); font-weight: 300; max-width: 340px; line-height: 1.5; }
 
+  .site-nav { display: flex; gap: 1.5rem; align-items: baseline; }
+  .nav-link { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+  .nav-link:hover, .nav-link.active { color: var(--ink); }
+
+  .filter-section { padding: 1.25rem 2.5rem 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .filter-btn { background: none; border: 0.5px solid var(--subtle); color: var(--muted); font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 0.9rem; padding: 4px 14px; cursor: pointer; border-radius: 20px; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+  .filter-btn:hover { border-color: var(--ink); color: var(--ink); }
+  .filter-btn.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
   .grid-section { padding: 2rem 2.5rem; }
   .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: calc((100vw - 5rem - 16px) / 3); gap: 8px; grid-auto-flow: dense; }
   @media (max-width: 600px) { .photo-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: calc((100vw - 4rem - 8px) / 2); } .grid-item.wide { grid-column: span 1; } .grid-item.tall { grid-row: span 1; } }
@@ -67,9 +76,22 @@
   <span class="site-name">Unhurried</span>
   <div class="header-bottom">
     <span class="site-tagline">Evan Lai &mdash; Photography</span>
-    <span class="site-quote">&ldquo;I photograph the things people walk past without stopping.&rdquo;</span>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-link active">Work</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
   </div>
 </header>
+
+<section class="filter-section">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="amsterdam">Amsterdam</button>
+  <button class="filter-btn" data-filter="brussels">Brussels</button>
+  <button class="filter-btn" data-filter="tokyo">Tokyo</button>
+  <button class="filter-btn" data-filter="korea">Korea</button>
+  <button class="filter-btn" data-filter="taiwan">Taiwan</button>
+  <button class="filter-btn" data-filter="japan">Japan</button>
+</section>
 
 <section class="grid-section">
   <div class="photo-grid" id="mainGrid"></div>
@@ -270,6 +292,20 @@ function resetGrid() {
 }
 
 document.getElementById("aiInput").addEventListener("keydown", e => { if (e.key === "Enter") handlePrompt(); });
+
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    const filter = btn.dataset.filter;
+    const items = document.querySelectorAll("#mainGrid .grid-item");
+    items.forEach((item, i) => {
+      const photo = PHOTOS[i];
+      const match = filter === "all" || (photo && photo.tags.includes(filter));
+      item.style.display = match ? "" : "none";
+    });
+  });
+});
 
 function openLightbox(photo) {
   document.getElementById("lightboxImg").src = photo.src;
