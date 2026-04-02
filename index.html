@@ -8,7 +8,9 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root { --ink: #1a1814; --muted: #8a8680; --subtle: #e8e5e0; --bg: #f7f5f2; --white: #ffffff; --accent: #c8a96e; }
-  body { font-family: "DM Sans", sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
+  body { font-family: "DM Sans", sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; animation: pageFadeIn 0.4s ease; }
+  @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  body.fade-out { opacity: 0; transition: opacity 0.3s ease; }
 
   header { padding: 4rem 2.5rem 3rem; border-bottom: 0.5px solid var(--subtle); }
   .site-name { font-family: "Cormorant Garamond", serif; font-size: clamp(3rem, 10vw, 7rem); font-weight: 300; font-style: italic; letter-spacing: -0.01em; color: var(--ink); line-height: 1.2; display: block; margin-bottom: 1.5rem; transform: skewX(-8deg); display: inline-block; }
@@ -317,6 +319,15 @@ function closeLightbox(e) {
     document.getElementById("lightbox").classList.remove("open");
 }
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+
+document.querySelectorAll("a.nav-link").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const href = link.getAttribute("href");
+    document.body.classList.add("fade-out");
+    setTimeout(() => { window.location.href = href; }, 300);
+  });
+});
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
